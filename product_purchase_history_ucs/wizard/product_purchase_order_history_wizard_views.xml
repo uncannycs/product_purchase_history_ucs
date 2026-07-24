@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_product_purchase_history_line_tree" model="ir.ui.view">
+            <field name="name">product.purchase.history.line.tree</field>
+            <field name="model">product.purchase.history.line</field>
+            <field name="arch" type="xml">
+                <tree string="Price History Table" create="false" edit="false" delete="false">
+                    <field name="purchase_order_id"/>
+                    <field name="history_price"/>
+                    <field name="history_qty"/>
+                    <field name="history_total"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="product_purchase_order_history_view_form" model="ir.ui.view">
+            <field name="name">Product Purchase history</field>
+            <field name="model">product.purchase.order.history</field>
+            <field name="arch" type="xml">
+                <form string="Product Purchase History">
+                    <div>
+                        <field name="product_id" readonly="1"/>
+                        <field name="product_purchase_history_ids" mode="tree" nolabel="1" readonly="1">
+                            <tree string="Price History Table">
+                                <field name="order_line_id" column_invisible="1"/>
+                                <field name="purchase_order_id"/>
+                                <field name="history_price"/>
+                                <field name="history_qty"/>
+                                <field name="history_total"/>
+                            </tree>
+                        </field>
+                    </div>
+                    <separator string="Price History Table for generic customer"/>
+                    <div>
+                        <field name="product_purchase_ohistory_ids" mode="tree" nolabel="1" readonly="1">
+                            <tree string="Price History Table for generic customer">
+                                <field name="order_line_id" column_invisible="1"/>
+                                <field name="partner_id"/>
+                                <field name="purchase_order_id"/>
+                                <field name="history_price"/>
+                                <field name="history_qty"/>
+                                <field name="history_total"/>
+                            </tree>
+                        </field>
+                    </div>
+                    
+                    <footer>
+                        <button string="Cancel" class="btn btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="product_purchase_order_history_action" model="ir.actions.act_window">
+            <field name="name">Product Purchase history</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.purchase.order.history</field>
+            <field name="view_id" ref="product_purchase_order_history_view_form"/>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>
