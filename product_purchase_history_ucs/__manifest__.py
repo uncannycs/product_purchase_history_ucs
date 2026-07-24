@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Product Purchase History UCS",
-    'version': '18.0.1.0.0',
+    'version': '19.0.1.0.0',
     'summary': """User can view The Purchase history of The 
     products from Purchase Order Line""",
     'description': """Purchases history of products from Purchase Order Line""",
