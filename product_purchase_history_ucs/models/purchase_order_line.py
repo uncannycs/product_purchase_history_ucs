@@ -22,7 +22,7 @@ class PurchaseOrderLine(models.Model):
                 if line.product_id.id == self.product_id.id:
                     values.append((0, 0, {'purchase_order_id': order.id,
                                           'history_price': line.price_unit,
-                                          'history_qty': line.product_qty,
+                                          'history_qty': line.product_uom_qty,
                                           'history_total': order.amount_total
                                           }))
         for oorder in customer_order_other:
@@ -31,7 +31,7 @@ class PurchaseOrderLine(models.Model):
                         ovalues.append((0, 0, {'purchase_order_id': oorder.id,
                                                'partner_id': oorder.partner_id.id,
                                               'history_price': oline.price_unit,
-                                              'history_qty': oline.product_qty,
+                                              'history_qty': oline.product_uom_qty,
                                               'history_total': oorder.amount_total
                                               }))
         history_id = self.env['product.purchase.order.history'].create({
