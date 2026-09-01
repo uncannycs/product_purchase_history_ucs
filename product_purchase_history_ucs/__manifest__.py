@@ -17,7 +17,7 @@
         'wizard/product_purchase_order_history_wizard_views.xml',
         'views/purchase_order_view.xml',
     ],
-    'images': ['static/description/banner.jpg'],
+    'images': ['static/description/banner.gif'],
     'installable': True,
     'auto_install': False,
     'price': 30,
